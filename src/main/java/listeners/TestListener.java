@@ -1,5 +1,6 @@
 package listeners;
 
+import business.Common;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestNGMethod;
@@ -13,8 +14,6 @@ import java.util.Calendar;
 
 public class TestListener implements ITestListener
 {
-    // set to true to record test results to TestRail
-    Boolean postResultsToTestRail = false;
     // shows more detailed logs in console if set to true
     Boolean debugInfo = true;
 
@@ -53,7 +52,7 @@ public class TestListener implements ITestListener
         System.out.println("===============================================");
 
         // if you have chosen to record test results to TestRail
-        if (postResultsToTestRail)
+        if (Common.postResultsToTestRail)
         {
             ITestNGMethod m = result.getMethod();
             // get the method name for the test
@@ -126,7 +125,7 @@ public class TestListener implements ITestListener
         String errorMessage = arg0.getThrowable().toString();
 
         // if you have chosen to record test results to TestRail
-        if (postResultsToTestRail)
+        if (Common.postResultsToTestRail)
         {
             ITestNGMethod m = arg0.getMethod();
             // store the test method name
